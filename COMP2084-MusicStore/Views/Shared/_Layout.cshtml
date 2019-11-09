@@ -35,7 +35,10 @@
                     <li><a asp-area="" asp-controller="Songs" asp-action="Index">Songs</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                    <li><a asp-area="" asp-controller="StoreManager" asp-action="Index">Store Manager</a></li>
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Administrator"))
+                    {
+                    <li><a asp-area="" asp-controller="StoreManager" asp-action="Index">Store Manager</a></li>  
+                    }
                 </ul>
                 <partial name="_LoginPartial" />
             </div>
