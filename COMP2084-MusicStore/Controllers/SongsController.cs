@@ -45,6 +45,8 @@ namespace COMP2084_MusicStore.Controllers
         // GET: Songs/Create
         public IActionResult Create()
         {
+            if (!User.Identity.IsAuthenticated) return Redirect("/Identity/Account/Login");
+
             var albums = _context.Album.OrderBy(x => x.Title).Select(x => new { Id = x.AlbumId, Value = x.Title });
 
             ViewBag.AlbumsList = new SelectList(albums, "Id", "Value");
@@ -71,6 +73,8 @@ namespace COMP2084_MusicStore.Controllers
         // GET: Songs/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            if (!User.Identity.IsAuthenticated) return Redirect("/Identity/Account/Login");
+
             if (id == null)
             {
                 return NotFound();
@@ -122,6 +126,8 @@ namespace COMP2084_MusicStore.Controllers
         // GET: Songs/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            if (!User.Identity.IsAuthenticated) return Redirect("/Identity/Account/Login");
+
             if (id == null)
             {
                 return NotFound();

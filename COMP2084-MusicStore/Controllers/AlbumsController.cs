@@ -45,6 +45,8 @@ namespace COMP2084_MusicStore.Controllers
         // GET: Albums/Create
         public IActionResult Create()
         {
+            if (!User.Identity.IsAuthenticated) return Redirect("/Identity/Account/Login");
+
             return View();
         }
 
@@ -67,6 +69,8 @@ namespace COMP2084_MusicStore.Controllers
         // GET: Albums/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            if (!User.Identity.IsAuthenticated) return Redirect("/Identity/Account/Login");
+
             if (id == null)
             {
                 return NotFound();
@@ -118,6 +122,8 @@ namespace COMP2084_MusicStore.Controllers
         // GET: Albums/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            if (!User.Identity.IsAuthenticated) return Redirect("/Identity/Account/Login");
+
             if (id == null)
             {
                 return NotFound();
