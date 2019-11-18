@@ -47,7 +47,8 @@ namespace COMP2084_MusicStore
                 .AddDefaultTokenProviders();
 
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1).AddSessionStateTempDataProvider();
 
             services.AddDbContext<MusicStoreContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("MusicStoreContext")));
@@ -66,6 +67,8 @@ namespace COMP2084_MusicStore
             app.UseCookiePolicy();
 
             app.UseAuthentication();
+
+            app.UseSession();
 
             app.UseMvc(routes =>
             {
