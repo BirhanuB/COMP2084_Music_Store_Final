@@ -4,7 +4,13 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <UserSecretsId>aspnet-COMP2084_MusicStore-FAAA957D-BFD4-4A71-8C36-58EED5C9EE29</UserSecretsId>
     <RootNamespace>COMP2084_MusicStore</RootNamespace>
+    <AssemblyName>COMP2084_MusicStore</AssemblyName>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20191125212210_Nov25.cs" />
+    <Compile Remove="Migrations\20191125212210_Nov25.Designer.cs" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />

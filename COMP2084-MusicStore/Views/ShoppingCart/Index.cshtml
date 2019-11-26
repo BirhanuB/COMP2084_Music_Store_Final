@@ -48,9 +48,6 @@
                     @Html.DisplayFor(x => item.Count)
                 </td>
                 <td>
-                    @Html.DisplayFor(x => item.Song.Title)
-                </td>
-                <td>
                     @Html.ActionLink("Remove from cart", "RemoveFromCart", "ShoppingCart", new { SongId = item.SongId })
                 </td>
                 @*<td>

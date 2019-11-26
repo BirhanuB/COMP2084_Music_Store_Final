@@ -59,8 +59,9 @@ namespace COMP2084_MusicStore.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("SongId,AlbumId,Title,Featuring")] Song song)
+        public async Task<IActionResult> Create([Bind("SongId,AlbumId,Title,Featuring,Price")] Song song)
         {
+            if (song.Price <= 0) throw new InvalidOperationException(); 
             if (ModelState.IsValid)
             {
                 _context.Add(song);
@@ -93,7 +94,7 @@ namespace COMP2084_MusicStore.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("SongId,AlbumId,Title,Featuring")] Song song)
+        public async Task<IActionResult> Edit(int id, [Bind("SongId,AlbumId,Title,Featuring,Price")] Song song)
         {
             if (id != song.SongId)
             {
